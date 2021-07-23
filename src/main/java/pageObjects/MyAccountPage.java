@@ -15,10 +15,23 @@ public class MyAccountPage {
     private WebElement welcomeMsg;
     @FindBy(xpath="//*[@class='logout']")
     private WebElement logOut;
+    @FindBy(xpath="//*[@class='is_required validate account_input form-control']")
+    private WebElement emailAdress;
+    @FindBy(id="SubmitCreate")
+    private WebElement createAccountButton;
+
     public void verifyWelcomeMsg(String expectedWelcomeMsg){
         Assert.assertTrue(expectedWelcomeMsg.equals(welcomeMsg.getText()));
     }
     public void loggingOut(){
         logOut.click();
+    }
+    public void typingEmailAddress(String newEmail)
+    {
+        emailAdress.sendKeys(newEmail);
+    }
+    public void creatingNewAccount()
+    {
+        createAccountButton.click();
     }
 }

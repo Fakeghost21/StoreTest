@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import pageObjects.AuthenticationPage;
+import pageObjects.CreatingAccountPage;
 import pageObjects.HomePage;
 import pageObjects.MyAccountPage;
 
@@ -16,6 +17,7 @@ public class BaseTests {
     public HomePage homePage;
     public AuthenticationPage autPage;
     public MyAccountPage myPg;
+    public CreatingAccountPage createAccount;
     @Before
     public void setup()
     {
@@ -26,6 +28,7 @@ public class BaseTests {
         homePage = PageFactory.initElements(driver,HomePage.class);
         autPage = PageFactory.initElements(driver,AuthenticationPage.class);
         myPg = PageFactory.initElements(driver,MyAccountPage.class);
+        createAccount = PageFactory.initElements(driver,CreatingAccountPage.class);
 
     }
 //   @After

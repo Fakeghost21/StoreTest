@@ -12,5 +12,25 @@ public class LogInTests extends BaseTests {
         autPage.clickSignInButton();
         myPg.verifyWelcomeMsg("Welcome to your account. Here you can manage all of your personal information and orders.");
         myPg.loggingOut();
+
     }
+    @Test
+    public void shouldSuccessfullyCreateAnAccount()
+    {
+        homePage.clickSignInButton();
+        myPg.typingEmailAddress("testAddress@test.uk");
+        myPg.creatingNewAccount();
+        createAccount.completingCustomerName("First Test");
+        createAccount.completingCustomerPassword("testPassword1!");
+        createAccount.completingTheAddress("The test's address");
+        createAccount.completingTheCustomerCity("Oklahoma");
+        createAccount.completingTheState("Arkansas");
+        createAccount.completingThePostcode("40000");
+        createAccount.completingTheCustomerCountry("United States");
+        createAccount.completingTheCustomerMobilePhone("9999999999");
+        createAccount.completingTheAlias("");
+        createAccount.registerTheCustomer();
+
+    }
+
 }
