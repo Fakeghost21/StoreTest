@@ -32,5 +32,14 @@ public class LogInTests extends BaseTests {
         createAccount.registerTheCustomer();
 
     }
+    @Test
+    public void shouldSuccessfullyAddToCart()
+    {
+        homePage.clickSignInButton();
+        autPage.enterEmailAddress("ksfvdj@tss.ro");
+        autPage.enterPassword("cDu2Z!F@eeyGgXR");
+        autPage.clickSignInButton();
+        orderPage.accessTheStoreTShirts(a);
+    }
 
 }
