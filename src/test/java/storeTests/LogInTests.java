@@ -39,7 +39,10 @@ public class LogInTests extends BaseTests {
         autPage.enterEmailAddress("ksfvdj@tss.ro");
         autPage.enterPassword("cDu2Z!F@eeyGgXR");
         autPage.clickSignInButton();
-        orderPage.accessTheStoreTShirts(a);
+        orderPage.accessTheStoreTops(a);
+        orderPage.accessTheStoreTopsBlouses();
+        orderPage.changeTheColourOfTheBlouse(a);
+        orderPage.addToCart();
     }
 
 }
