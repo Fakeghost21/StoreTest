@@ -17,6 +17,7 @@ public class BaseTests {
     public MyAccountPage myPg;
     public CreatingAccountPage createAccount;
     public PlaceAnOrderPage orderPage;
+    public ProceedToCheckOutPage checkOutPage;
     public Actions a;
     @Before
     public void setup()
@@ -31,6 +32,7 @@ public class BaseTests {
         myPg = PageFactory.initElements(driver,MyAccountPage.class);
         createAccount = PageFactory.initElements(driver,CreatingAccountPage.class);
         orderPage = PageFactory.initElements(driver,PlaceAnOrderPage.class);
+        checkOutPage = PageFactory.initElements(driver,ProceedToCheckOutPage.class);
 
     }
 //   @After
