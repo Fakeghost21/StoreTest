@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +26,10 @@ public class PlaceAnOrderPage {
     private WebElement storeWomenTopsBlousesWhite;
     @FindBy(xpath="//*[@class='exclusive']")
     private WebElement addToCartButton;
+    @FindBy(xpath="//*[@class='button-container']/span")
+    private WebElement continueShoppingButton;
+    @FindBy(xpath="//*[@class='shopping_cart']/a/span")
+    private WebElement cartQuantity;
     public void accessTheStoreTops(Actions a)
     {
         a.moveToElement(storeWomen);
@@ -46,6 +51,14 @@ public class PlaceAnOrderPage {
     public void addToCart()
     {
         addToCartButton.click();
+    }
+    public void continueShopping()
+    {
+        continueShoppingButton.click();
+    }
+    public void verifyQuantity(String expectedQuantity)
+    {
+        Assert.assertEquals(expectedQuantity, cartQuantity.getText());
     }
 
 }

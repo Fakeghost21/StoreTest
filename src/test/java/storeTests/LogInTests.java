@@ -43,6 +43,8 @@ public class LogInTests extends BaseTests {
         orderPage.accessTheStoreTopsBlouses();
         orderPage.changeTheColourOfTheBlouse(a);
         orderPage.addToCart();
+        orderPage.continueShopping();
+        orderPage.verifyQuantity("1");
     }
 
 }
