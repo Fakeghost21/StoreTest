@@ -45,6 +45,10 @@ public class LogInTests extends BaseTests {
         orderPage.addToCart();
         orderPage.continueShopping();
         orderPage.verifyQuantity("1");
+        checkOutPage.proceedToCheckout(a);
+        checkOutPage.verifyProductName("Blouse");
+        checkOutPage.verifyProductDescription("Color : White, Size : S");
+        checkOutPage.verifyProductUnitPrice("$27.00");
     }
 
 }
