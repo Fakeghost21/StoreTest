@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
+
 public class ProceedToCheckOutPage {
     WebDriver driver;
 
@@ -22,6 +24,12 @@ public class ProceedToCheckOutPage {
     private WebElement cartProductDescription;
     @FindBy(xpath="//*[@class=\"cart_unit\"]/span/span")
     private WebElement cartProductUnitPrice;
+    @FindBy(xpath="//*[@class='cart_quantity_up btn btn-default button-plus']")
+    private WebElement cartProductAddingQuantityButton;
+    @FindBy(xpath="//*[@class='cart_quantity text-center']/input")
+    private WebElement cartProductUnits;
+    @FindBy(xpath="//*[@class='cart_total']/span")
+    private WebElement cartTotal;
     public void proceedToCheckout(Actions a)
     {
         a.moveToElement(shoppingCart).perform();
@@ -42,7 +50,25 @@ public class ProceedToCheckOutPage {
     {
         Assert.assertEquals(productUnitPrice, cartProductUnitPrice.getText());
     }
-
+    public void uppingTheCartProductQuantity(int productQuantity)
+    {
+        for(int i=0;i<productQuantity;i++) {
+            //Integer v = i+1;
+            //Assert.assertEquals(v.toString(), cartProductUnits.getAttribute("value"));
+            cartProductAddingQuantityButton.click();
+        }
+    }
+    public void verifyCartProductQuantity()
+    {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        Assert.assertEquals("6", cartProductUnits.getAttribute("value"));
+    }
+    public void verifyCartTotal(double totalPrice)
+    {
+        double cartTotalPrice = Double.parseDouble(cartTotal.getText().split("[$]")[1]);
+        //Assert.assertTrue(totalPrice==cartTotalPrice);
+        //System.out.println(cartTotalPrice);
+    }
 
 
 
