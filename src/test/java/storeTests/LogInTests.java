@@ -49,9 +49,17 @@ public class LogInTests extends BaseTests {
         checkOutPage.verifyProductName("Blouse");
         checkOutPage.verifyProductDescription("Color : White, Size : S");
         checkOutPage.verifyProductUnitPrice("$27.00");
-        checkOutPage.uppingTheCartProductQuantity(5);
-        //checkOutPage.verifyCartProductQuantity();
-        //checkOutPage.verifyCartTotal(162.00);
+        checkOutPage.verifyCartProductQuantity();
+        checkOutPage.verifyCartTotalDelivery();
+        checkOutPage.proceedToCheckoutToTheAddress();
+        checkOutPage.proceedToCheckoutButtonToTheShipping();
+        checkOutPage.verifyTheShippingOptionBox();
+        checkOutPage.checkTheTermsOfServiceBox();
+        checkOutPage.proceedToCheckoutButtonToThePayment();
+        checkOutPage.payByBankWire();
+        checkOutPage.verifyConfirmationOfPaymentByBankWire();
+        checkOutPage.confirmTheOrder();
     }
+
 
 }

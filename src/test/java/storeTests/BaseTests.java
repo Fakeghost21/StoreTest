@@ -1,6 +1,5 @@
 package storeTests;
 
-import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -32,7 +31,7 @@ public class BaseTests {
         myPg = PageFactory.initElements(driver,MyAccountPage.class);
         createAccount = PageFactory.initElements(driver,CreatingAccountPage.class);
         orderPage = PageFactory.initElements(driver,PlaceAnOrderPage.class);
-        checkOutPage = PageFactory.initElements(driver,ProceedToCheckOutPage.class);
+        checkOutPage = PageFactory.initElements(driver, ProceedToCheckOutPage.class);
 
     }
 //   @After
