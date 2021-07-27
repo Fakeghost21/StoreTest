@@ -76,6 +76,7 @@ public class ProceedToCheckOutPage {
     {
         Assert.assertEquals("1", cartProductUnits.getAttribute("value"));
         cartProductAddingQuantityButton.click();
+        //wait 10 seconds until the page loads and the attribute of the element changes
         WebDriverWait wait = new WebDriverWait(driver,10);
         Assert.assertTrue(wait.until(ExpectedConditions.attributeContains(cartProductUnits,"value","2")));
 
