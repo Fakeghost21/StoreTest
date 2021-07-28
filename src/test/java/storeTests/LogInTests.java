@@ -60,6 +60,35 @@ public class LogInTests extends BaseTests {
         checkOutPage.verifyConfirmationOfPaymentByBankWire();
         checkOutPage.confirmTheOrder();
     }
+    //Add correctly to the wishlist,but ony in the first wishlist created(no other option)
+    @Test
+    public void shouldSuccessfullyAddToAWishlist()
+    {
+        homePage.clickSignInButton();
+        autPage.enterEmailAddress("ksfvdj@tss.ro");
+        autPage.enterPassword("cDu2Z!F@eeyGgXR");
+        autPage.clickSignInButton();
+        wishlistPage.clickMyWishlistsButton();
+        wishlistPage.giveANameToTheWishlist("Wishlist 1");
+        wishlistPage.clickTheSaveButtonForWishlist();
+        wishlistPage.verifyTheNameOfTheNewWishlist("Wishlist 1");
+        wishlistPage.verifyTheCreationDateOfTheWishlist(java.time.LocalDate.now().toString());
+        //create another wishlist
+        wishlistPage.giveANameToTheWishlist("Wishlist 2");
+        wishlistPage.clickTheSaveButtonForWishlist();
+        //wishlistPage.clickOnTheSecondWishlistFromTheTable();
+        wishlistPage.clickOnBackToYourAccountButton();
+        orderPage.accessTheStoreTShirts(a);
+        orderPage.addTShirtToTheWishlist(a);
+        orderPage.clickOnViewMyAccountButton();
+        wishlistPage.clickMyWishlistsButton();
+        wishlistPage.verifyTheFirstWishlistQuantity("0");
+        wishlistPage.verifyTheSecondWishlistQuantity("0");
+        wishlistPage.clickOnTheFirstWishlistFromTheTable();
+        wishlistPage.verifyTheContentOfTheWishlist("Faded Short Sleeve T-shirts");
+
+    }
+
 
 
 }

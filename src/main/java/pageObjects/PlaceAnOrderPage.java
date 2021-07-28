@@ -21,7 +21,7 @@ public class PlaceAnOrderPage {
     @FindBy(xpath="//*[@id=\"subcategories\"]/ul/li[2]/div/a")
     private WebElement storeWomenTopsBlouses;
     @FindBy(xpath="//*[@class='product_list grid row']/li")
-    private WebElement storeWomenTopsBlousesHover;
+    private WebElement storeWomenOrderContainer;
     @FindBy(id="color_8")
     private WebElement storeWomenTopsBlousesWhite;
     @FindBy(xpath="//*[@class='exclusive']")
@@ -30,6 +30,12 @@ public class PlaceAnOrderPage {
     private WebElement continueShoppingButton;
     @FindBy(xpath="//*[@class='shopping_cart']/a/span")
     private WebElement cartQuantity;
+    @FindBy(xpath="//*[@class=\"submenu-container clearfix first-in-line-xs\"]/li/ul/li/a")
+    private WebElement storeWomenTShirts;
+    @FindBy(xpath = "//*[@class=\"wishlist\"]/a")
+    private WebElement addToWishlistButton;
+    @FindBy(xpath = "//*[@title='View my customer account']")
+    private WebElement viewMyCustomerAccountButton;
     public void accessTheStoreTops(Actions a)
     {
         a.moveToElement(storeWomen);
@@ -38,13 +44,29 @@ public class PlaceAnOrderPage {
         a.click().build().perform();
         //storeWomen.click();
     }
+    public void accessTheStoreTShirts(Actions a)
+    {
+        a.moveToElement(storeWomen);
+        a.moveToElement(storeWomenTShirts);
+        a.click().build().perform();
+    }
+    public void addTShirtToTheWishlist(Actions a)
+    {
+        a.moveToElement(storeWomenOrderContainer);
+        a.moveToElement(addToWishlistButton);
+        a.click().build().perform();
+    }
+    public void clickOnViewMyAccountButton()
+    {
+        viewMyCustomerAccountButton.click();
+    }
     public void accessTheStoreTopsBlouses()
     {
         storeWomenTopsBlouses.click();
     }
     public void changeTheColourOfTheBlouse(Actions a)
     {
-        a.moveToElement(storeWomenTopsBlousesHover);
+        a.moveToElement(storeWomenOrderContainer);
         a.moveToElement(storeWomenTopsBlousesWhite);
         a.click().build().perform();
     }
