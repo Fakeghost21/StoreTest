@@ -21,20 +21,6 @@ public class CreatingAccountPage {
     private WebElement ownerOfTheAddressFirstName;
     @FindBy(id="lastname")
     private WebElement ownerOfTheAddressLastName;
-    @FindBy(id="address1")
-    private WebElement address;
-    @FindBy(id="city")
-    private WebElement city;
-    @FindBy(id="id_state")
-    private WebElement state;
-    @FindBy(id="postcode")
-    private WebElement postcode;
-    @FindBy(id="id_country")
-    private WebElement country;
-    @FindBy(id="phone_mobile")
-    private WebElement mobilePhone;
-    @FindBy(id="alias")
-    private WebElement alias;
     @FindBy(id="submitAccount")
     private WebElement register;
 
@@ -47,33 +33,6 @@ public class CreatingAccountPage {
     public void completingCustomerPassword(String thePassword)
     {
      customerPassword.sendKeys(thePassword);
-    }
-    public void completingTheAddress(String theAddress){
-        address.sendKeys(theAddress);
-    }
-    public void completingTheCustomerCity(String theCity)
-    {
-        city.sendKeys(theCity);
-    }
-    public void completingTheState(String newState)
-    {
-        state.sendKeys(newState);
-    }
-    public void completingThePostcode(String code)
-    {
-        postcode.sendKeys(code);
-    }
-    public void completingTheCustomerCountry(String theCountry)
-    {
-        country.sendKeys(theCountry);
-    }
-    public void completingTheCustomerMobilePhone(String theMobilePhone)
-    {
-        mobilePhone.sendKeys(theMobilePhone);
-    }
-    public void completingTheAlias(String theAlias)
-    {
-        alias.sendKeys(theAlias);
     }
     public void registerTheCustomer()
     {

@@ -20,6 +20,8 @@ public class AuthenticationPage {
     private WebElement signInButton;
     @FindBy(xpath = "//*[@title=\"My wishlists\"]")
     private WebElement myWishlistsButton;
+    @FindBy(xpath = "//*[@title=\"Addresses\"]")
+    private WebElement myAddressesButton;
     public void clickMyWishlistsButton()
     {
         myWishlistsButton.click();
@@ -34,4 +36,10 @@ public class AuthenticationPage {
     public void clickSignInButton(){
         signInButton.click();
     }
+    public void clickMyAddressesButton()
+    {
+        myAddressesButton.click();
+
+    }
 }
+

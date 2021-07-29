@@ -18,17 +18,17 @@ public class LogInTests extends BaseTests {
     public void shouldSuccessfullyCreateAnAccount()
     {
         homePage.clickSignInButton();
-        myAccountPage.typingEmailAddress("testAddress@test.uk");
+        myAccountPage.typingEmailAddress("testAddress3@test.uk");
         myAccountPage.creatingNewAccount();
         createAccount.completingCustomerName("First Test");
         createAccount.completingCustomerPassword("testPassword1!");
-        createAccount.completingTheAddress("The test's address");
-        createAccount.completingTheCustomerCity("Oklahoma");
-        createAccount.completingTheState("Arkansas");
-        createAccount.completingThePostcode("40000");
-        createAccount.completingTheCustomerCountry("United States");
-        createAccount.completingTheCustomerMobilePhone("9999999999");
-        createAccount.completingTheAlias("");
+        myAddressesPage.setNewAddress("The test address");
+        myAddressesPage.setNewCity("City");
+        myAddressesPage.setNewState("Alaska");
+        myAddressesPage.setNewPostcode("50000");
+        myAddressesPage.setNewMobilePhone("7467844698");
+        myAddressesPage.completingTheCustomerCountry("United States");
+        myAddressesPage.completingTheAlias("");
         createAccount.registerTheCustomer();
 
     }
@@ -98,7 +98,16 @@ public class LogInTests extends BaseTests {
         autPage.enterEmailAddress("ksfvdj@tss.ro");
         autPage.enterPassword("cDu2Z!F@eeyGgXR");
         autPage.clickSignInButton();
-
+        autPage.clickMyAddressesButton();
+        myAddressesPage.clickAddAnAddressButton();
+        myAddressesPage.setNewAddress("New Test address");
+        myAddressesPage.setNewCity("Test City");
+        myAddressesPage.setNewState("Alaska");
+        myAddressesPage.setNewPostcode("50000");
+        myAddressesPage.setNewMobilePhone("4846794977");
+        myAddressesPage.completingTheAlias("2");
+        myAddressesPage.clickSaveTheAddressButton();
+        //to delete the second address
     }
 
 
