@@ -71,7 +71,6 @@ public class LogInTests extends BaseTests {
         autPage.enterPassword("cDu2Z!F@eeyGgXR");
         autPage.clickSignInButton();
         autPage.clickMyWishlistsButton();
-        //wishlistPage.clickOnDeleteWishlistButton();
         wishlistPage.giveANameToTheWishlist("Wishlist 1");
         wishlistPage.clickTheSaveButtonForWishlist();
         wishlistPage.verifyTheNameOfTheNewWishlist("Wishlist 1");
@@ -79,7 +78,6 @@ public class LogInTests extends BaseTests {
         //create another wishlist
         wishlistPage.giveANameToTheWishlist("Wishlist 2");
         wishlistPage.clickTheSaveButtonForWishlist();
-        //wishlistPage.clickOnTheSecondWishlistFromTheTable();
         wishlistPage.clickOnBackToYourAccountButton();
         orderPage.accessTheStoreTShirts(a);
         orderPage.addTShirtToTheWishlist(a);
