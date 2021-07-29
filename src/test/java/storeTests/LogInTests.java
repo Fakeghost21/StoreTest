@@ -10,16 +10,16 @@ public class LogInTests extends BaseTests {
         autPage.enterEmailAddress("ksfvdj@tss.ro");
         autPage.enterPassword("cDu2Z!F@eeyGgXR");
         autPage.clickSignInButton();
-        myPg.verifyWelcomeMsg("Welcome to your account. Here you can manage all of your personal information and orders.");
-        myPg.loggingOut();
+        myAccountPage.verifyWelcomeMsg("Welcome to your account. Here you can manage all of your personal information and orders.");
+        myAccountPage.loggingOut();
 
     }
     @Test
     public void shouldSuccessfullyCreateAnAccount()
     {
         homePage.clickSignInButton();
-        myPg.typingEmailAddress("testAddress@test.uk");
-        myPg.creatingNewAccount();
+        myAccountPage.typingEmailAddress("testAddress@test.uk");
+        myAccountPage.creatingNewAccount();
         createAccount.completingCustomerName("First Test");
         createAccount.completingCustomerPassword("testPassword1!");
         createAccount.completingTheAddress("The test's address");
@@ -33,7 +33,7 @@ public class LogInTests extends BaseTests {
 
     }
     @Test
-    public void shouldSuccessfullyAddToCart()
+    public void shouldSuccessfullyAddToCartAndProceedToCheckout()
     {
         homePage.clickSignInButton();
         autPage.enterEmailAddress("ksfvdj@tss.ro");
@@ -59,6 +59,8 @@ public class LogInTests extends BaseTests {
         checkOutPage.payByBankWire();
         checkOutPage.verifyConfirmationOfPaymentByBankWire();
         checkOutPage.confirmTheOrder();
+        checkOutPage.clickBackToOrdersButton();
+        orderHistoryPage.verifyTheOrderDate(java.time.LocalDate.now().toString());
     }
     //Add correctly to the wishlist,but ony in the first wishlist created(no other option)
     @Test
@@ -87,6 +89,14 @@ public class LogInTests extends BaseTests {
         wishlistPage.clickOnTheFirstWishlistFromTheTable();
         wishlistPage.verifyTheContentOfTheWishlist("Faded Short Sleeve T-shirts");
 
+    }
+    @Test
+    public void shouldAddToTheOrdersHistory()
+    {
+        homePage.clickSignInButton();
+        autPage.enterEmailAddress("ksfvdj@tss.ro");
+        autPage.enterPassword("cDu2Z!F@eeyGgXR");
+        autPage.clickSignInButton();
     }
 
 

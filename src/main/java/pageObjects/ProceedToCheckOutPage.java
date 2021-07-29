@@ -52,6 +52,8 @@ public class ProceedToCheckOutPage {
     private WebElement confirmationOfTheOrder;
     @FindBy(xpath="//*[@class=\"button btn btn-default button-medium\"]")
     private WebElement confirmTheOrderButton;
+    @FindBy(xpath="//*[@title=\"Back to orders\"]")
+    private WebElement backToOrdersButton;
     public void proceedToCheckout(Actions a)
     {
         //hover over the element then click in the hover result
@@ -122,5 +124,9 @@ public class ProceedToCheckOutPage {
     {
         confirmTheOrderButton.click();
         Assert.assertEquals("Your order on My Store is complete.",confirmationOfTheOrder.getText());
+    }
+    public void clickBackToOrdersButton()
+    {
+        backToOrdersButton.click();
     }
 }

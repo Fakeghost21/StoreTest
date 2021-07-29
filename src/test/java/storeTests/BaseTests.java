@@ -13,11 +13,12 @@ public class BaseTests {
     public WebDriver driver;
     public HomePage homePage;
     public AuthenticationPage autPage;
-    public MyAccountPage myPg;
+    public MyAccountPage myAccountPage;
     public CreatingAccountPage createAccount;
     public PlaceAnOrderPage orderPage;
     public ProceedToCheckOutPage checkOutPage;
     public WishlistPage wishlistPage;
+    public OrderHistoryPage orderHistoryPage;
     public Actions a;
     @Before
     public void setup()
@@ -29,11 +30,12 @@ public class BaseTests {
         a = new Actions(driver);
         homePage = PageFactory.initElements(driver,HomePage.class);
         autPage = PageFactory.initElements(driver,AuthenticationPage.class);
-        myPg = PageFactory.initElements(driver,MyAccountPage.class);
+        myAccountPage = PageFactory.initElements(driver,MyAccountPage.class);
         createAccount = PageFactory.initElements(driver,CreatingAccountPage.class);
         orderPage = PageFactory.initElements(driver,PlaceAnOrderPage.class);
         checkOutPage = PageFactory.initElements(driver, ProceedToCheckOutPage.class);
         wishlistPage = PageFactory.initElements(driver,WishlistPage.class);
+        orderHistoryPage = PageFactory.initElements(driver,OrderHistoryPage.class);
 
     }
 //   @After
