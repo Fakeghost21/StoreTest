@@ -70,7 +70,8 @@ public class LogInTests extends BaseTests {
         autPage.enterEmailAddress("ksfvdj@tss.ro");
         autPage.enterPassword("cDu2Z!F@eeyGgXR");
         autPage.clickSignInButton();
-        wishlistPage.clickMyWishlistsButton();
+        autPage.clickMyWishlistsButton();
+        //wishlistPage.clickOnDeleteWishlistButton();
         wishlistPage.giveANameToTheWishlist("Wishlist 1");
         wishlistPage.clickTheSaveButtonForWishlist();
         wishlistPage.verifyTheNameOfTheNewWishlist("Wishlist 1");
@@ -83,21 +84,25 @@ public class LogInTests extends BaseTests {
         orderPage.accessTheStoreTShirts(a);
         orderPage.addTShirtToTheWishlist(a);
         orderPage.clickOnViewMyAccountButton();
-        wishlistPage.clickMyWishlistsButton();
+        autPage.clickMyWishlistsButton();
         wishlistPage.verifyTheFirstWishlistQuantity("0");
         wishlistPage.verifyTheSecondWishlistQuantity("0");
         wishlistPage.clickOnTheFirstWishlistFromTheTable();
+        wishlistPage.clickOnTheFirstWishlistFromTheTable();
         wishlistPage.verifyTheContentOfTheWishlist("Faded Short Sleeve T-shirts");
+        wishlistPage.clickOnDeleteWishlistButton(2);
 
     }
     @Test
-    public void shouldAddToTheOrdersHistory()
+    public void shouldAddANewAddress()
     {
         homePage.clickSignInButton();
         autPage.enterEmailAddress("ksfvdj@tss.ro");
         autPage.enterPassword("cDu2Z!F@eeyGgXR");
         autPage.clickSignInButton();
+
     }
+
 
 
 

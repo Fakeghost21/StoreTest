@@ -18,6 +18,12 @@ public class AuthenticationPage {
     private WebElement password;
     @FindBy(xpath="//*[@class='icon-lock left']")
     private WebElement signInButton;
+    @FindBy(xpath = "//*[@title=\"My wishlists\"]")
+    private WebElement myWishlistsButton;
+    public void clickMyWishlistsButton()
+    {
+        myWishlistsButton.click();
+    }
     public void enterEmailAddress(String emailAddress1){
 
         emailAddress.sendKeys(emailAddress1);

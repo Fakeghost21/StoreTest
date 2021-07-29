@@ -19,6 +19,7 @@ public class BaseTests {
     public ProceedToCheckOutPage checkOutPage;
     public WishlistPage wishlistPage;
     public OrderHistoryPage orderHistoryPage;
+    public MyAddressesPage myAddressesPage;
     public Actions a;
     @Before
     public void setup()
@@ -36,6 +37,7 @@ public class BaseTests {
         checkOutPage = PageFactory.initElements(driver, ProceedToCheckOutPage.class);
         wishlistPage = PageFactory.initElements(driver,WishlistPage.class);
         orderHistoryPage = PageFactory.initElements(driver,OrderHistoryPage.class);
+        myAddressesPage = PageFactory.initElements(driver,MyAddressesPage.class);
 
     }
 //   @After

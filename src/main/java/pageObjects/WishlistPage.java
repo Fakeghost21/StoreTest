@@ -1,9 +1,12 @@
 package pageObjects;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WishlistPage {
     WebDriver driver;
@@ -11,30 +14,26 @@ public class WishlistPage {
     public WishlistPage(WebDriver driver) {
         this.driver = driver;
     }
-    @FindBy(xpath = "//*[@title=\"My wishlists\"]")
-    private WebElement myWishlistsButton;
     @FindBy(id="name")
     private WebElement wishlistsNameInput;
     @FindBy(id="submitWishlist")
     private WebElement saveTheWishlistButton;
-    @FindBy(xpath="//*[@id=\"wishlist_36900\"]/td/a")
+    @FindBy(xpath="//*[@class=\"table table-bordered\"]/tbody/tr/td/a")
     private WebElement actualNameOfTheWishlistBox;
-    @FindBy(xpath = "//*[@id=\"wishlist_36900\"]/td[4]")
+    @FindBy(xpath = "//*[@class=\"table table-bordered\"]/tbody/tr/td[4]")
     private WebElement actualCreationDateOfTheWishlist;
     @FindBy(xpath="//*[@class=\"table table-bordered\"]/tbody/tr/td/a")
     private WebElement firstWishlistInTheWishlistTable;
     @FindBy(xpath = "//*[@class=\"footer_links clearfix\"]/li/a")
     private WebElement backToYourAccountButton;
-    @FindBy(xpath = "//*[@id=\"wishlist_36900\"]/td[2]")
+    @FindBy(xpath = "//*[@class=\"table table-bordered\"]/tbody/tr/td[2]")
     private WebElement firstWishlistQuantity;
     @FindBy(xpath = "//*[@class=\"table table-bordered\"]/tbody/tr[2]/td[2]")
     private WebElement secondWishlistQuantity;
     @FindBy(xpath = "//*[@class=\"product_infos\"]/p")
     private WebElement productNameFromTheWishlist;
-    public void clickMyWishlistsButton()
-    {
-        myWishlistsButton.click();
-    }
+    @FindBy(xpath = "//*[@class=\"wishlist_delete\"]/a")
+    private WebElement deleteTheWishlistButton;
     public void giveANameToTheWishlist(String wishlistsName)
     {
         wishlistsNameInput.sendKeys(wishlistsName);
@@ -70,5 +69,15 @@ public class WishlistPage {
     public void verifyTheContentOfTheWishlist(String actualContentOfTheWishlist)
     {
         Assert.assertEquals(actualContentOfTheWishlist,productNameFromTheWishlist.getText());
+    }
+    public void clickOnDeleteWishlistButton(int numberOfWishlists)
+    {
+        //while(!driver.findElements(By.xpath("//*[@class=\"wishlist_delete\"]")).isEmpty())
+        for(int i = 0;i<numberOfWishlists;i++){
+            deleteTheWishlistButton.click();
+            //handling the popup
+            driver.switchTo().alert().accept();
+            WebDriverWait wait = new WebDriverWait(driver,10);
+        }
     }
 }
