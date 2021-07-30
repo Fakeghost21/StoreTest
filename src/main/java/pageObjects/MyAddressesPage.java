@@ -29,6 +29,8 @@ public class MyAddressesPage {
     private WebElement alias;
     @FindBy(id="id_country")
     private WebElement country;
+    @FindBy(xpath = "//*[@class=\"last_item alternate_item box\"]/li[9]/a[2]")
+    private WebElement deleteAddressButton;
     public void clickAddAnAddressButton()
     {
         addAnAddressButton.click();
@@ -65,5 +67,7 @@ public class MyAddressesPage {
     {
         country.sendKeys(theCountry);
     }
+    public void clickDeleteTheAddressButton(){deleteAddressButton.click();
+        driver.switchTo().alert().accept();}
 
 }

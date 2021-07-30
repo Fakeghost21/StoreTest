@@ -108,6 +108,7 @@ public class LogInTests extends BaseTests {
         myAddressesPage.completingTheAlias("2");
         myAddressesPage.clickSaveTheAddressButton();
         //to delete the second address
+        myAddressesPage.clickDeleteTheAddressButton();
     }
 
 
