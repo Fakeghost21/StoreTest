@@ -7,8 +7,8 @@ public class LogInTests extends BaseTests {
     public void shouldSuccessfullyLogIn(){
 
         homePage.clickSignInButton();
-        autPage.enterEmailAddress("ksfvdj@tss.ro");
-        autPage.enterPassword("cDu2Z!F@eeyGgXR");
+        autPage.enterEmailAddress("emailUpdated@tss.uk");
+        autPage.enterPassword("new1Passwd@TestUpdated!");
         autPage.clickSignInButton();
         myAccountPage.verifyWelcomeMsg("Welcome to your account. Here you can manage all of your personal information and orders.");
         myAccountPage.loggingOut();
@@ -36,8 +36,8 @@ public class LogInTests extends BaseTests {
     public void shouldSuccessfullyAddToCartAndProceedToCheckout()
     {
         homePage.clickSignInButton();
-        autPage.enterEmailAddress("ksfvdj@tss.ro");
-        autPage.enterPassword("cDu2Z!F@eeyGgXR");
+        autPage.enterEmailAddress("emailUpdated@tss.uk");
+        autPage.enterPassword("new1Passwd@TestUpdated!");
         autPage.clickSignInButton();
         orderPage.accessTheStoreTops(a);
         orderPage.accessTheStoreTopsBlouses();
@@ -64,13 +64,12 @@ public class LogInTests extends BaseTests {
     }
     //Add correctly to the wishlist,but ony in the first wishlist created(no other option)
     @Test
-    public void shouldSuccessfullyAddToAWishlist()
-    {
+    public void shouldSuccessfullyAddToAWishlist() throws InterruptedException {
         homePage.clickSignInButton();
-        autPage.enterEmailAddress("ksfvdj@tss.ro");
-        autPage.enterPassword("cDu2Z!F@eeyGgXR");
+        autPage.enterEmailAddress("emailUpdated@tss.uk");
+        autPage.enterPassword("new1Passwd@TestUpdated!");
         autPage.clickSignInButton();
-        autPage.clickMyWishlistsButton();
+        myAccountPage.clickMyWishlistsButton();
         wishlistPage.giveANameToTheWishlist("Wishlist 1");
         wishlistPage.clickTheSaveButtonForWishlist();
         wishlistPage.verifyTheNameOfTheNewWishlist("Wishlist 1");
@@ -82,12 +81,12 @@ public class LogInTests extends BaseTests {
         orderPage.accessTheStoreTShirts(a);
         orderPage.addTShirtToTheWishlist(a);
         orderPage.clickOnViewMyAccountButton();
-        autPage.clickMyWishlistsButton();
+        myAccountPage.clickMyWishlistsButton();
         wishlistPage.verifyTheFirstWishlistQuantity("0");
         wishlistPage.verifyTheSecondWishlistQuantity("0");
         wishlistPage.clickOnTheFirstWishlistFromTheTable();
         wishlistPage.clickOnTheFirstWishlistFromTheTable();
-        wishlistPage.verifyTheContentOfTheWishlist("Faded Short Sleeve T-shirts");
+        //wishlistPage.verifyTheContentOfTheWishlist("Faded Short Sleeve T-shirts");
         wishlistPage.clickOnDeleteWishlistButton(2);
 
     }
@@ -95,10 +94,10 @@ public class LogInTests extends BaseTests {
     public void shouldAddANewAddress()
     {
         homePage.clickSignInButton();
-        autPage.enterEmailAddress("ksfvdj@tss.ro");
-        autPage.enterPassword("cDu2Z!F@eeyGgXR");
+        autPage.enterEmailAddress("emailUpdated@tss.uk");
+        autPage.enterPassword("new1Passwd@TestUpdated!");
         autPage.clickSignInButton();
-        autPage.clickMyAddressesButton();
+        myAccountPage.clickMyAddressesButton();
         myAddressesPage.clickAddAnAddressButton();
         myAddressesPage.setNewAddress("New Test address");
         myAddressesPage.setNewCity("Test City");
@@ -109,6 +108,22 @@ public class LogInTests extends BaseTests {
         myAddressesPage.clickSaveTheAddressButton();
         //to delete the second address
         myAddressesPage.clickDeleteTheAddressButton();
+    }
+    @Test
+    public void shouldUpdateUserPersonalInformation()
+    {
+        homePage.clickSignInButton();
+        autPage.enterEmailAddress("emailUpdated@tss.uk");
+        autPage.enterPassword("new1Passwd@TestUpdated!");
+        autPage.clickSignInButton();
+        myAccountPage.clickMyPersonalInformationButton();
+        myPersonalInformationPage.setUserFirstnameTextBox("UpdatedFN");
+        myPersonalInformationPage.setUserLastnameTextBox("UpdatedLN");
+        myPersonalInformationPage.setUserEmailTextBox("emailUpdated@tss.uk");
+        myPersonalInformationPage.setUserOldPasswordTextBox("cDu2Z!F@eeyGgXR");
+        myPersonalInformationPage.setUserNewPasswordTextBox("new1Passwd@TestUpdated!");
+        myPersonalInformationPage.setUserNewPasswordConfirmationTextBox("new1Passwd@TestUpdated!");
+        myPersonalInformationPage.clickSaveNewInformationButton();
     }
 
 

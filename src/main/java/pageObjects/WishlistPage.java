@@ -2,14 +2,17 @@ package pageObjects;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WishlistPage {
     WebDriver driver;
+    String half1OfDeleteWishlistButtonAddress ="//*[@class=\"table table-bordered\"]/tbody/tr[";
+    String half2OfDeleteWishlistButtonAddress ="]/td[6]/a";
 
     public WishlistPage(WebDriver driver) {
         this.driver = driver;
@@ -32,8 +35,10 @@ public class WishlistPage {
     private WebElement secondWishlistQuantity;
     @FindBy(xpath = "//*[@class=\"product_infos\"]/p")
     private WebElement productNameFromTheWishlist;
-    @FindBy(xpath = "//*[@class=\"wishlist_delete\"]/a")
+    //@FindBy(xpath = "//*[@class=\"wishlist_delete\"]/a")
     private WebElement deleteTheWishlistButton;
+    @FindBy(xpath = "//*[@id=\"block-history\"]")
+    private WebElement table;
     public void giveANameToTheWishlist(String wishlistsName)
     {
         wishlistsNameInput.sendKeys(wishlistsName);
@@ -68,16 +73,35 @@ public class WishlistPage {
     }
     public void verifyTheContentOfTheWishlist(String actualContentOfTheWishlist)
     {
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.visibilityOf(productNameFromTheWishlist));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", productNameFromTheWishlist);
         Assert.assertEquals(actualContentOfTheWishlist,productNameFromTheWishlist.getText());
     }
-    public void clickOnDeleteWishlistButton(int numberOfWishlists)
-    {
+    public void clickOnDeleteWishlistButton(Integer numberOfWishlists) throws InterruptedException {
         //while(!driver.findElements(By.xpath("//*[@class=\"wishlist_delete\"]")).isEmpty())
-        for(int i = 0;i<numberOfWishlists;i++){
-            deleteTheWishlistButton.click();
-            //handling the popup
+
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", table);
+//        for(int i = 0;i<numberOfWishlists;i++){
+//            //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", table);
+//            deleteTheWishlistButton.click();
+//            //handling the popup
+//            Thread.sleep(1000);
+//            driver.switchTo().alert().accept();
+//            driver.navigate().refresh();
+//            WebDriverWait wait = new WebDriverWait(driver,5);
+//            wait.until(ExpectedConditions.visibilityOf(deleteTheWishlistButton));
+//            //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", table);
+//            deleteTheWishlistButton.click();
+
+        //deletes the wishlists from the wishlist table starting up from bottom to top
+        for(Integer i=numberOfWishlists;i>0;i--)
+        {
+            deleteTheWishlistButton=driver.findElement(By.xpath(half1OfDeleteWishlistButtonAddress +i.toString()+ half2OfDeleteWishlistButtonAddress));//I split the address in two
+            deleteTheWishlistButton.click();                                    //so it can work with in index
             driver.switchTo().alert().accept();
-            WebDriverWait wait = new WebDriverWait(driver,10);
+            WebDriverWait wait = new WebDriverWait(driver,5);
+            wait.until(ExpectedConditions.visibilityOf(deleteTheWishlistButton));
         }
     }
 }

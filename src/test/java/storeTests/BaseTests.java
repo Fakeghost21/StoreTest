@@ -20,6 +20,7 @@ public class BaseTests {
     public WishlistPage wishlistPage;
     public OrderHistoryPage orderHistoryPage;
     public MyAddressesPage myAddressesPage;
+    public MyPersonalInformationPage myPersonalInformationPage;
     public Actions a;
     @Before
     public void setup()
@@ -27,7 +28,7 @@ public class BaseTests {
         System.setProperty("webdriver.chrome.driver","src/test/resources/driver/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         a = new Actions(driver);
         homePage = PageFactory.initElements(driver,HomePage.class);
         autPage = PageFactory.initElements(driver,AuthenticationPage.class);
@@ -38,6 +39,7 @@ public class BaseTests {
         wishlistPage = PageFactory.initElements(driver,WishlistPage.class);
         orderHistoryPage = PageFactory.initElements(driver,OrderHistoryPage.class);
         myAddressesPage = PageFactory.initElements(driver,MyAddressesPage.class);
+        myPersonalInformationPage = PageFactory.initElements(driver,MyPersonalInformationPage.class);
 
     }
 //   @After

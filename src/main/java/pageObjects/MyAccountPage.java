@@ -16,22 +16,38 @@ public class MyAccountPage {
     @FindBy(xpath="//*[@class='logout']")
     private WebElement logOut;
     @FindBy(xpath="//*[@class='is_required validate account_input form-control']")
-    private WebElement emailAdress;
+    private WebElement emailAddress;
     @FindBy(id="SubmitCreate")
     private WebElement createAccountButton;
+    @FindBy(xpath = "//*[@title=\"My wishlists\"]")
+    private WebElement myWishlistsButton;
+    @FindBy(xpath = "//*[@title=\"Addresses\"]")
+    private WebElement myAddressesButton;
+    @FindBy(xpath = "//*[@title=\"Information\"]")
+    private WebElement myPersonalInformationButton;
+    public void clickMyAddressesButton()
+    {
+        myAddressesButton.click();
 
+    }
+    public void clickMyWishlistsButton()
+    {
+        myWishlistsButton.click();
+    }
+    public void clickMyPersonalInformationButton(){myPersonalInformationButton.click();}
     public void verifyWelcomeMsg(String expectedWelcomeMsg){
-        Assert.assertTrue(expectedWelcomeMsg.equals(welcomeMsg.getText()));
+        Assert.assertEquals(expectedWelcomeMsg, welcomeMsg.getText());
     }
     public void loggingOut(){
         logOut.click();
     }
     public void typingEmailAddress(String newEmail)
     {
-        emailAdress.sendKeys(newEmail);
+        emailAddress.sendKeys(newEmail);
     }
     public void creatingNewAccount()
     {
         createAccountButton.click();
     }
+
 }
